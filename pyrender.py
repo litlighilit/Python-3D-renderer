@@ -11,7 +11,12 @@ from time import sleep
 from os.path import isfile
 # To automatically decide screen resolution
 # To clear the screen by system("cls")
-from os import get_terminal_size, system
+from os import get_terminal_size, system, name
+
+if name == 'nt':
+    def clear_screen(): system('cls')
+else:
+    def clear_screen(): system('clear')
 
 def normalize_v3d(vector):
     length = sqrt(vector[0]**2 + vector[1]**2 + vector[2]**2)
@@ -3641,7 +3646,7 @@ def clear():
     h += 3
     for _ in range(h):
         print("  " * w)
-    system("cls")
+    clear_screen()
 
 
 if __name__ == "__main__":

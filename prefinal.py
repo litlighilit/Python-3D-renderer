@@ -189,8 +189,10 @@ pyrender.Light.render_shadow(pyrender.Light.lights, pyrender.Object.objects)
 # 8&9 are reserved, because shift+8 is *, which will conflict with that in the numpad,
 # and it's weird if only 8 is disabled so shift + 9 is also now.
 keyboard_number_lookup={"!":1, "@":2, "#":3, "$":4, "%":5, "^":6, "&":7, ")":0}
-from os import system
-system("cls")
+
+from pyrender import clear_screen
+clear_screen()
+
 while True:
     frame_index += 1
     start = time()
@@ -701,7 +703,7 @@ while True:
         h += 3
         # frame = [[(0, 0, 0)] * w for _ in range(h)]
         pyrender.display(frame)
-        system("cls")
+        clear_screen()
         cam.rendering_plane_z = cam.width * 0.5 / pyrender.tan(cam.fov * pyrender.pi / 360)
     
     elif key == "P":
@@ -939,7 +941,7 @@ while True:
                         print(exception)
             
             elif " ".join(command) in ("q", "quit", "exit"):
-                system("cls")
+                clear_screen()
                 control.command_mode_GL = False
                 break
             
