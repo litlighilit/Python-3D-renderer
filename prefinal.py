@@ -1,11 +1,11 @@
 135, 69
 
 import pyrender
-import subprocess
 # import particles
 from math import sin, cos, pi, sqrt, tan
 import control
 from time import time
+from access_clipboard import set_clipboard
 
 
 pyrender.Object.default_obj_dir = "models/Final/"
@@ -758,7 +758,7 @@ while True:
         aim_point = not aim_point
     
     elif key == "C":
-        subprocess.run(["powershell", "Set-Clipboard", " -Value", repr(cam.stat())])
+        set_clipboard(repr(cam.stat()))
 
     elif key == "+":
         pyrender.bias_scalar += 0.1

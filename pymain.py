@@ -1,7 +1,7 @@
 import pyrender
-import subprocess
 # import particles
 import control
+from access_clipboard import set_clipboard
 
 # pyrender.Light.shadow_properties = (2048, 0.01, 1000, 1024)
 # PARTICLES = particles.Particles(density=2,
@@ -364,7 +364,7 @@ while True:
         aim_point = not aim_point
     
     elif key == "C":
-        subprocess.run(["powershell", "Set-Clipboard", " -Value", repr(cam.stat())])
+        set_clipboard(repr(cam.stat()))
 
     elif key == "+":
         pyrender.bias_scalar += 0.1
